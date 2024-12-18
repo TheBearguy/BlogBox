@@ -1,4 +1,4 @@
-import conf from "../conf/conf";
+import conf from "../conf/conf.js";
 import {Client, Account, ID} from "appwrite"
 
 // normally we would connect the appwrite project and endpoint here directly and handle the user authentication,
@@ -12,10 +12,10 @@ export class AuthService {
     client = new Client();
     account;
 
-    constructor(client, account) {
+    constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId)
+            .setProject(conf.appwriteProjectId); 
         this.account = new Account(this.client);
     }
 
@@ -36,7 +36,7 @@ export class AuthService {
 
     async login({email, password}) {
         try {
-            return await this.account.createEmailPasswordSession();
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
             throw error;
         }
@@ -44,9 +44,11 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
+            console.log(this.account);
+
             return await this.account.get();
         } catch (error) {
-            throw error;
+           console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
         return null;
     }
