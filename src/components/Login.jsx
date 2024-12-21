@@ -3,7 +3,7 @@ import { Link, matchPath, useNavigate } from 'react-router-dom'
 import {login as authLogin} from '../features/authSlice'
 import {useDispatch} from 'react-redux'
 import {Button, Input, Logo} from "./index"
-import {service} from '../appwrite/config'
+import { authService } from '../appwrite/auth_service'
 import { useForm  } from "react-hook-form"
 function Login() {
     const navigate = useNavigate();
@@ -17,10 +17,10 @@ function Login() {
     const login = async (data) => {
         setError(""); // for clearing the error message, if any from previous login attempt
         try {
-            const session = await service.login(data);
+            const session = await authService.login(data);
             console.log("session", session);
             if (session) {
-                const userData = await service.getCurrentUser();
+                const userData = await authService.getCurrentUser();
                 if (userData) {
                     dispatch(authLogin({userData}));
                 }
