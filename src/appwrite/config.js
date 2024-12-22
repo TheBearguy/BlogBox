@@ -83,6 +83,7 @@ export class configServer{
     async getPosts(queries = [Query.equal("status", ["active"])]) {
         // get active posts only
         try {
+            // it'll return a list of documents
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,

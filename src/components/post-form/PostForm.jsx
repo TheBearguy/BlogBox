@@ -74,6 +74,7 @@ function PostForm({post}) {
                 // there'll be a slug field in the form
             }
         })
+// memory management
         return () => {
             subscription.unsubscribe();
             // memory management
