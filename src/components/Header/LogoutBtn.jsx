@@ -9,6 +9,7 @@ function LogoutBtn() {
         // all appwrite methods are async
         // all processes related to appwrite are async, they return a promise
         // so we can use .then() to handle the response
+        // console.log("HEADER :: Logout Button Clicked");
         authService.logout()
             .then(() => {
                 // dispatch an action to update the state

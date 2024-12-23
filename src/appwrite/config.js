@@ -17,6 +17,9 @@ export class configServer{
 
     async createPost({title, slug, content, featuredImage, status, userId}) {
         try {
+            console.log("CREATEPOST STATUS:: ",status);
+            console.log("CREATEPOST USERID:: ",userId);
+
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -100,6 +103,7 @@ export class configServer{
     // here pass the blog of the file (the actual file, not just the name of the file)
     async uploadFile(file) {
         try {
+            console.log(conf.appwriteBucketId);
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
@@ -125,6 +129,8 @@ export class configServer{
     }
 
     getFilePreview(fileId) {
+        console.log(fileId);
+        
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId,

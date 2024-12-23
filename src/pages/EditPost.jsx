@@ -27,7 +27,7 @@ function EditPost() {
             <PostForm post={post}/>
         </Container>
     </div>
-  )
+  ) : null
 }
 
 export default EditPost

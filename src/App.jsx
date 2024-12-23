@@ -11,6 +11,8 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log("APP :: useEffect :: ");
+
         authService.getCurrentUser()
             .then((userData) => {
                 if (userData) {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {authService} from '../appwrite/auth_service'
+import authService from '../appwrite/auth_service'
 import {Link, useNavigate} from 'react-router-dom'
 import {Button, Input, Logo} from "./index"
 import {useForm} from 'react-hook-form'
@@ -13,6 +13,8 @@ function Signup() {
     const create = async  (data) => {
         setError("");
         try {
+            console.log("SIGNUP :: data", data);
+
             const userData = await authService.createAccount(data);
 
             if (userData) {
@@ -37,7 +39,7 @@ function Signup() {
             <h2 className='text-center text-2xl font-bold leading-tight'>Sign up to Create an account</h2>
             <p className='mt-2 text-center text-base text-black/60'>
                 Already have an account?&nbsp;
-                <Link to={/login}
+                <Link to={"/login"}
                     className='font-medium text-primary transition-all duration-200 hover:underline'>Sign in
                 </Link>
             </p>

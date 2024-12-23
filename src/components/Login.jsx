@@ -3,7 +3,7 @@ import { Link, matchPath, useNavigate } from 'react-router-dom'
 import {login as authLogin} from '../features/authSlice'
 import {useDispatch} from 'react-redux'
 import {Button, Input, Logo} from "./index"
-import { authService } from '../appwrite/auth_service'
+import authService  from '../appwrite/auth_service'
 import { useForm  } from "react-hook-form"
 function Login() {
     const navigate = useNavigate();
@@ -17,6 +17,8 @@ function Login() {
     const login = async (data) => {
         setError(""); // for clearing the error message, if any from previous login attempt
         try {
+            console.log("LOGIN :: data", data);
+
             const session = await authService.login(data);
             console.log("session", session);
             if (session) {
@@ -42,7 +44,7 @@ function Login() {
             </div>
             <h2 className='text-center text-2xl font-bold leading-tight'>Sign in to your account bro</h2>
             <p className='mt-2 text-center text-base text-black/60'>
-                Don$apos;t have an account? <Link to='/signup' className='font-medium text-primary transition-all duration-200 hover:underline'>Create one</Link>
+                Don't have an account? <Link to='/signup' className='font-medium text-primary transition-all duration-200 hover:underline'>Create one</Link>
             </p>
             {error && <p className='text-red-600 text-center mt-8'>{error}</p>}
             <form action={handleSubmit(login)} className='mt-8'>
