@@ -3,22 +3,21 @@ import { service } from '../appwrite/config'
 import { Container, PostCard } from '../components'
 function AllPosts() {
     const [posts, setPosts] = useState([]);
-    useEffect(() => {
+    useEffect(() => {})
+
         service.getPosts([])
             .then((posts) => {
                 if (posts) {
                     setPosts(posts.documents); // set the posts state to the posts from the server response
                 }
             } )
-            .catch()
-    })
   return (
     <div className='w-full py-8'>
         <Container>
             <div className='flex flex-wrap'>
                 {posts.map((post, index) => (
                     <div key={post.$id} className='p-2 w-1/4'>
-                        <PostCard post={post}/>
+                        <PostCard {...post}/>
                     </div>
                 ))}
             </div>

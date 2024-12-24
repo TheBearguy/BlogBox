@@ -33,7 +33,7 @@ function Home() {
                     {posts.map((post, index) => (
                         <div key={post.$id} className='p-2 w-1/4'>
                             {/* <PostCard post={post}/> */}
-                            <PostCard {...post}/> // post is an object, so we can spread it to pass it as props
+                            <PostCard {...post}/>
                         </div>
                     ))}
                 </div>
