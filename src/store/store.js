@@ -3,8 +3,9 @@ import reducer from "../features/authSlice.js"
 import authSlice from "../features/authSlice.js"
 const store = configureStore({
     reducer:{
-        auth: authSlice
+        auth: authSlice,
         // TODO: add more slices here for posts
+        // post: postSlice
     } // reducer imported from some slice
 })
 
